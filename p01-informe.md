@@ -46,14 +46,18 @@
 
 ### La falla inyectada
 
-| | |
-|---|---|
-| **Síntoma** — qué se veía | |
-| **Escalón** donde apareció la evidencia decisiva | |
-| **Salida de ese escalón** (pegada) | |
-| **Causa** — qué estaba roto de verdad | |
-| **Arreglo** — qué se hizo | |
-| **Quién la encontró** | |
+|                                                                            
+|--------------------------------------------------|----------------------------------------------------------------------------------------------------------|
+| **Síntoma** — qué se veía                        |El script ejecutando a mano ( /usr/local/bin/healthcheck.sh) funcionaba bien, pero dejo de registrar ejecuciones automaticas
+|			                           |en var/log/healthcheck.log)
+
+| **Escalón** donde apareció la evidencia decisiva |Inspeccion directa del archivo de configuracion del demonio cron (/etc/cron.d/healthcheck                 |
+| **Salida de ese escalón** (pegada)               |* /5 * * * root healthcheck.sh                          |
+| **Causa** — qué estaba roto de verdad            |El archivo cron llamaba al ejecutable como healthcheck.sh sin su ruta basoluta /usr/local/bin/healthcheck
+|                                                  |al no tener la  variable PATH adecuada CRON no encontraba el ejecutable                                   | 
+| **Arreglo** — qué se hizo                        |Se ejecuto el comando de restaur el entorno "sudo bash rotura.sh restaurar" devolviendo la ruta absoluta
+|                                                  |al archivo etc/cron.d/healthcheck                                                                         |
+| **Quién la encontró**                            |Sanz Rodrigo                                                                                              |
 
 > La última fila no es un trámite: el criterio pide que el grupo pueda decir
 > **quién** bajó la escalera hasta la evidencia. Y lo que se corrige no es que el
@@ -62,7 +66,13 @@
 
 ## 4. Análisis y conclusión
 
-(respuestas a las preguntas de cierre + conclusión del estado del servidor)
+1) Por que el script funcionaba de forma manual pero no mediante cron? 
+Cuando el usuario ejecuta el script , hereda variables como PATH que permite encontrar ejecutables sin especificar 
+la ruta. Pero cron se ejecuta en un entorno restringido y si no se especifica su ruta falla en encontrar el comando
+
+2)Por que se eligio systemd timer como mecanismos definitivo?
+El servidor quedo operativo, el script de diagnostico cumple sus reglas y genera estados de salia 0/1 y automatiza
+mediante el timer , encuentra una activa y agendada correctamente para permitir su ejecución 
 
 ## 5. Quién hizo qué
 
@@ -71,6 +81,5 @@ semestre (cada integrante tiene que haber firmado al menos 3 prácticas).
 
 | Integrante | De qué se ocupó en esta práctica |
 |------------|----------------------------------|
-| | |
-| | |
-| | |
+|Sanz Rodrigo| Practica completa                |
+|
