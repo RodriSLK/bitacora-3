@@ -1,0 +1,69 @@
+    5  sudo tee /etc/network/interfaces.d/lan-empresa >/dev/null <<'FIN'
+   60  printf '%s\n' "INFORME FIN DE SEMANA" > ~/informe-fds.txt
+   61  printf '\n%s\n' "P1: Intentos fallidos" >> ~/informe-fds,txt 
+   62  printf 'cmd: %s\n' "grep ' Failed password' auth.loh | wc -l" >> ~/informe-fds.txt 
+   63  grep "Failed password" auth.log | wc -l >> ~/informe-fds.txt 
+   64  printf '\n%s\n' "P2: Ips atacantes" >> ~/informe-fds.txt 
+   65  printf 'cmd: %s\n' "grep 'Failed password' auth.log | grep -oE 'from [0-9.]+" | cut -d' ' -f2 | sort | uniq -c | sort -rn | head" >> ~/informe-fds.txt 
+grep "Failed password" auth.log | grep -oE "from [0-9.]+" | cut -d' ' -f2 | sort | uniq -c | sort -rn | head >>~/informe-fds.txt 
+printf '\n%s\n' "P3: Acceso logrado y archivo descargado" >> ~/informe-fds.txt 
+printf 'cmd: %s\n' "grep 'Accepted password' auth.log" >> ~/informe-fds.txt 
+grep "Accepted password" auth.log >> ~/informe-fds.txt 
+printf 'cmd: %s\n' "grep 'sudo' auth.log" >> ~/informe-fds.txt 
+grep "sudo" auth.log >> ~/informe-fds.txt 
+printf 'cmd: %s\n' "ls -l --time-style=full-iso /tmp/x.sh" >> ~/informe-fds.txt 
+ls -l --time-style=full-iso /tmp/x.sh >> ~/informe-fds.txt 
+printf '\n%s\n' "P4: Errores de respaldo nocturnos" >> ~/informe-fds.txt 
+printf 'cmd: %s\n' "grep -v 'OK' respaldo.log | head -20" >> ~/informe-fds.txt 
+grep -v "OK" respaldo.log | head -20 >> ~/informe-fds.txt 
+   66  printf '\n%s\n' "P2: Ips atacantes" >> ~/informe-fds.txt 
+   67  printf 'cmd: %s\n' "grep 'Failed password' auth.log | grep -oE 'from [0-9.]+' | cut -d' ' -f2 | sort | uniq -c | sort -rn | head" >> ~/informe-fds.txt 
+   68  grep "Failed password" auth.log | grep -oE "from [O-9.]+" | cut -d' ' -f2 | sort | uniq -c | sort -rn | head >> ~/informe-fds.txt 
+   69  printf 'cmd: %s\n' 'grep 'Failed password' auth.log | grep -oE 'from [0-9.]+' | cut -d' ' -f2 | sort | uniq -c | sort -rn | head' >> ~/informe-fds.txt 
+   70  grep "Failed password" auth.log | grep -oE "from [O-9.]+" | cut -d' ' -f2 | sort | uniq -c | sort -rn | head >> ~/informe-fds.txt 
+   71  printf 'cmd: %s\n' 'grep 'Failed password' auth.log | grep -oE "from [0-9.]+" | cut -d" " -f2 | sort | uniq -c | sort -rn | head' >> ~/informe-fds.txt 
+   72  grep "Failed password" auth.log | grep -oE "from [O-9.]+" | cut -d' ' -f2 | sort | uniq -c | sort -rn | head >> ~/informe-fds.txt 
+   73  printf 'cmd: %s\n' 'grep "Failed password" auth.log | grep -oE "from [0-9.]+" | cut -d" " -f2 | sort | uniq -c | sort -rn | head' >> ~/informe-fds.txt 
+   74  grep "Failed password" auth.log | grep -oE "from [O-9.]+" | cut -d' ' -f2 | sort | uniq -c | sort -rn | head >> ~/informe-fds.txt 
+   75  printf 'cmd: %s\n' 'grep "Failed password" auth.log | awk "{print \$11}" | sort | uniq -c | sort -rn | head' >> ~/informe-fds.txt 
+   76  grep "Failed password" auth.log | awk '{print $11}' | sort | uniq -c | sort -rn | head >> ~/informe-fds.txt 
+   77  printf '\n%s\n' "P3: Acceso logrado y archivo descargado" >> ~/informe-fds.txt 
+   78  printf 'cmd: %s\n' "grep 'Accepted password' auth.log" >> ~/informe-fds.txt 
+   79  grep "Accepted password" auth.log >> ~/informe-fds.txt 
+   80  printf 'cmd: %s\n' "grep 'sudo' auth.log" >> ~/informe-fds.txt 
+   81  grep "sudo" auth.log >> ~/informe-fds.txt 
+   82  printf 'cmd: %s\n' "ls -l --time-style=full-iso /tmp/x.sh" >> ~/informe-fds.txt 
+   83  ls -l --time-style=full-iso /tmp/x.sh >> ~/informe-fds.txt 
+   84  printf '\n%s\n' "P4: Errores de respaldo nocturnos" >> ~/informe-fds.txt 
+   85  printf 'cmd: %s\n' "grep -v 'OK' respaldo.log | head -20" >> ~/informe-fds.txt  
+   86  grep -v "OK" respaldo.log | head -20 >> ~/informe-fds.txt 
+   87  ls /noexiste > salida.txt 2> error.txt 
+   89  printg '%s\n' "PQ: Intentos fallidos" >> ~/p1_temp.txt
+   90  printf '%s\n' "PQ: Intentos fallidos" >> ~/p1_temp.txt
+   91  'cmd: %s\n' "grep 'Failed password' auth.log | wc -l" >> ~/p1_temp.txt 
+   92  printf 'cmd: %s\n' "grep 'Failed password' auth.log | wc -l" >> ~/p1_temp.txt 
+   93  grep "Failes password" auth.log | wc -l >> ~/p1_temp.txt 
+   94  cat ~/p1_temp.txt ~/informe-fds.txt > ~/informe_completo.txt 
+   99  printf '%s\n' "INFORME FIN DE SEMANA" > ~/informe-fds.txt
+  100  printf '\n%s\n' "P1: Intentos fallidos" >> ~/informe-fds,txt 
+  101  printf 'cmd: %s\n' "grep ' Failed password' auth.loh | wc -l" >> ~/informe-fds.txt 
+  102  grep "Failed password" auth.log | wc -l >> ~/informe-fds.txt 
+  103  printf '\n%s\n' "P2: Ips atacantes" >> ~/informe-fds.txt 
+  104  printf 'cmd: %s\n' "grep 'Failed password' auth.log | grep -oE 'from [0-9.]+' | cut -d' ' -f2 | sort | uniq -c | sort -rn | head" >> ~/informe-fds.txt 
+  105  grep "Failed password" auth.log | grep -oE "from [O-9.]+" | cut -d' ' -f2 | sort | uniq -c | sort -rn | head >> ~/informe-fds.txt 
+  106  printf 'cmd: %s\n' 'grep "Failed password" auth.log | awk "{print \$11}" | sort | uniq -c | sort -rn | head' >> ~/informe-fds.txt 
+  107  grep "Failed password" auth.log | awk '{print $11}' | sort | uniq -c | sort -rn | head >> ~/informe-fds.txt 
+  108  printf '\n%s\n' "P3: Acceso logrado y archivo descargado" >> ~/informe-fds.txt 
+  109  printf 'cmd: %s\n' "grep 'Accepted password' auth.log" >> ~/informe-fds.txt 
+  110  grep "Accepted password" auth.log >> ~/informe-fds.txt 
+  111  printf 'cmd: %s\n' "grep 'sudo' auth.log" >> ~/informe-fds.txt 
+  112  grep "sudo" auth.log >> ~/informe-fds.txt 
+  113  printf 'cmd: %s\n' "ls -l --time-style=full-iso /tmp/x.sh" >> ~/informe-fds.txt 
+  114  ls -l --time-style=full-iso /tmp/x.sh >> ~/informe-fds.txt 
+  115  printf '\n%s\n' "P4: Errores de respaldo nocturnos" >> ~/informe-fds.txt 
+  116  printf 'cmd: %s\n' "grep -v 'OK' respaldo.log | head -20" >> ~/informe-fds.txt  
+  117  grep -v "OK" respaldo.log | head -20 >> ~/informe-fds.txt 
+  119  ls /noexiste > salida.txr 2> error.txt 
+  120  ls /noexiste > salida.txt 2> error.txt 
+  121  ls /noexiste > ~/salid.txt 2> ~/error.txt 
+  123  history | grep -E '>>?' > ~/p02-historial.txt 
